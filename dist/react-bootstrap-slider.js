@@ -110,6 +110,14 @@
 
             var _this = _possibleConstructorReturn(this, (ReactBootstrapSlider.__proto__ || Object.getPrototypeOf(ReactBootstrapSlider)).call(this, props));
 
+            _this.sameTicksLabels = function (l1, l2) {
+                var result = l1.length == l2.length;
+                for (var i = 0; i < l1.length; i++) {
+                    result = result && l1[i] === l2[i];
+                }
+                return result;
+            };
+
             _this.updateSliderValues = _this.updateSliderValues.bind(_this);
             return _this;
         }
@@ -164,11 +172,12 @@
                 if (this.props.step && (this.mySlider.step || this.mySlider.options.step)) {
                     this.mySlider.setAttribute("step", this.props.step);
                 }
-                if (this.props.ticks && (this.mySlider.ticks || this.mySlider.options.ticks)) {
+                if (this.props.ticks && this.mySlider.options.ticks) {
                     this.mySlider.setAttribute("ticks", this.props.ticks);
                 }
-                if (this.props.ticks_labels && (this.mySlider.ticks_labels || this.mySlider.options.ticks_labels)) {
-                    this.mySlider.setAttribute("ticks_labels", this.props.ticks_labels);
+                if (this.props.ticks_labels && this.mySlider.options.ticks_labels && !this.notSameTicksLabels(this.props.ticks_labels, this.mySlider.options.ticks_labels)) {
+                    this.mySlider.setAttribute("ticks-labels", this.props.ticks_labels);
+                    this.mySlider.refresh();
                 }
 
                 this.mySlider.setValue(this.props.value);

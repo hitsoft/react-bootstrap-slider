@@ -64,6 +64,14 @@ export class ReactBootstrapSlider extends React.Component {
         this.updateSliderValues();
     }
 
+    sameTicksLabels = (l1, l2) => {
+        let result = (l1.length == l2.length);
+        for (let i=0; i<l1.length; i++) {
+            result = result && (l1[i] === l2[i]);
+        }
+        return result;
+    }
+
     updateSliderValues() {
         if (this.props.min && (this.mySlider.min || this.mySlider.options.min)) {
             this.mySlider.setAttribute("min", this.props.min);
@@ -74,11 +82,12 @@ export class ReactBootstrapSlider extends React.Component {
         if (this.props.step && (this.mySlider.step || this.mySlider.options.step)) {
             this.mySlider.setAttribute("step", this.props.step);
         }
-        if (this.props.ticks && (this.mySlider.ticks || this.mySlider.options.ticks)) {
+        if (this.props.ticks && this.mySlider.options.ticks) {
             this.mySlider.setAttribute("ticks", this.props.ticks);
         }
-        if (this.props.ticks_labels && (this.mySlider.ticks_labels || this.mySlider.options.ticks_labels)) {
+        if (this.props.ticks_labels && this.mySlider.options.ticks_labels && !this.notSameTicksLabels(this.props.ticks_labels, this.mySlider.options.ticks_labels)) {
             this.mySlider.setAttribute("ticks-labels", this.props.ticks_labels);
+            this.mySlider.refresh();
         }
 
 
