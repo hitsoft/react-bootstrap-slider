@@ -74,6 +74,13 @@ export class ReactBootstrapSlider extends React.Component {
         if (this.props.step && (this.mySlider.step || this.mySlider.options.step)) {
             this.mySlider.setAttribute("step", this.props.step);
         }
+        if (this.props.ticks && (this.mySlider.ticks || this.mySlider.options.ticks)) {
+            this.mySlider.setAttribute("ticks", this.props.ticks);
+        }
+        if (this.props.ticks_labels && (this.mySlider.ticks_labels || this.mySlider.options.ticks_labels)) {
+            this.mySlider.setAttribute("ticks_labels", this.props.ticks_labels);
+        }
+
 
         this.mySlider.setValue(this.props.value);
 
@@ -106,7 +113,9 @@ ReactBootstrapSlider.propTypes = {
     tooltip: PropTypes.string,
     change: PropTypes.func,
     handleChange: PropTypes.func,
-    slideStop: PropTypes.func
+    slideStop: PropTypes.func,
+    ticks: PropTypes.array,
+    ticks_labels: PropTypes.array
 };
 
 
