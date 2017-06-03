@@ -176,7 +176,7 @@
                     this.mySlider.setAttribute("ticks", this.props.ticks);
                 }
                 if (this.props.ticks_labels && this.mySlider.options.ticks_labels && !this.sameTicksLabels(this.props.ticks_labels, this.mySlider.options.ticks_labels)) {
-                    this.mySlider.setAttribute("ticks-labels", this.props.ticks_labels);
+                    this.mySlider.setAttribute("ticks_labels", this.props.ticks_labels);
                     this.mySlider.refresh();
                 }
 
