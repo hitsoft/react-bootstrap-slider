@@ -164,6 +164,12 @@
                 if (this.props.step && (this.mySlider.step || this.mySlider.options.step)) {
                     this.mySlider.setAttribute("step", this.props.step);
                 }
+                if (this.props.ticks && (this.mySlider.ticks || this.mySlider.options.ticks)) {
+                    this.mySlider.setAttribute("ticks", this.props.ticks);
+                }
+                if (this.props.ticks_labels && (this.mySlider.ticks_labels || this.mySlider.options.ticks_labels)) {
+                    this.mySlider.setAttribute("ticks_labels", this.props.ticks_labels);
+                }
 
                 this.mySlider.setValue(this.props.value);
 
@@ -204,7 +210,9 @@
         tooltip: _propTypes2.default.string,
         change: _propTypes2.default.func,
         handleChange: _propTypes2.default.func,
-        slideStop: _propTypes2.default.func
+        slideStop: _propTypes2.default.func,
+        ticks: _propTypes2.default.array,
+        ticks_labels: _propTypes2.default.array
     };
 
     exports.default = ReactBootstrapSlider;
